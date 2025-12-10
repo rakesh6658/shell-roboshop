@@ -53,7 +53,7 @@ cd /app &>>$log_file
 validate $? "Changing to app directory"
 
 rm -rf /app/*
-VALIDATE $? "Removing existing code"
+validate $? "Removing existing code"
 
 unzip /tmp/catalogue.zip &>>$log_file
 validate $? "unzipping in /tmp directory"
