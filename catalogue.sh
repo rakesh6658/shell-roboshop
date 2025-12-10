@@ -79,7 +79,7 @@ validate $? "copying mongo.repo"
 dnf install mongodb-mongosh -y &>>$log_file
 validate $? "installing mongosh"
 
-INDEX=$(mongosh mongodb.joindevops.store --quiet --eval "db.getMongo().getDBNames().indexOf('catalogue')")
+INDEX=$(mongosh mongodb.joindevops.store --quiet --eval "db.getMongo().getDBNames().indexOf('catalogue')") &>>$log_file
 if [ $INDEX -le 0 ]
 then
 mongosh --host mongodb.joindevops.store </app/db/master-data.js
