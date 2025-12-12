@@ -61,7 +61,7 @@ validate $? "unzipping in /tmp directory"
 npm install &>>$log_file
 validate $? "Installing dependencies"
 
-cp /home/ec2-cart/shell-roboshop/cart.service  /etc/systemd/system/cart.service &>>$log_file
+cp /home/ec2-user/shell-roboshop/cart.service  /etc/systemd/system/cart.service &>>$log_file
 validate $? "copying cart.service"
 
 systemctl daemon-reload &>>$log_file
