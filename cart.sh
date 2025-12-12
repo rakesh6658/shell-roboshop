@@ -10,7 +10,7 @@ fi
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 NC='\033[0m'
-MONGODB_HOST=mongodb.joindevops.store
+
 validate(){
 if [ $1 -ne 0 ]
 then
@@ -46,8 +46,8 @@ fi
 mkdir -p /app &>>$log_file
 validate $? "Creating app directory"
 
-curl -o /tmp/user.zip https://roboshop-artifacts.s3.amazonaws.com/user-v3.zip &>>$log_file
-validate $? "downloading user application"
+curl -o /tmp/cart.zip https://roboshop-artifacts.s3.amazonaws.com/cart-v3.zip &>>$log_file
+validate $? "downloading cart application"
 
 cd /app &>>$log_file
 validate $? "Changing to app directory"
@@ -55,23 +55,23 @@ validate $? "Changing to app directory"
 rm -rf /app/*
 validate $? "Removing existing code"
 
-unzip /tmp/user.zip &>>$log_file
+unzip /tmp/cart.zip &>>$log_file
 validate $? "unzipping in /tmp directory"
 
 npm install &>>$log_file
 validate $? "Installing dependencies"
 
-cp /home/ec2-user/shell-roboshop/user.service  /etc/systemd/system/user.service &>>$log_file
-validate $? "copying user.service"
+cp /home/ec2-cart/shell-roboshop/cart.service  /etc/systemd/system/cart.service &>>$log_file
+validate $? "copying cart.service"
 
 systemctl daemon-reload &>>$log_file
 validate $? "deamon reload"
 
-systemctl enable user  &>>$log_file
-validate $? "enabling user"
+systemctl enable cart  &>>$log_file
+validate $? "enabling cart"
 
-systemctl start user  &>>$log_file
-validate $? "starting user"
+systemctl start cart  &>>$log_file
+validate $? "starting cart"
 
 
 
