@@ -5,9 +5,9 @@ Description=Payment Service
 User=root
 WorkingDirectory=/app
 // highlight-start
-Environment=CART_HOST=cart.joindevops.store
+Environment=CART_HOST=172.31.65.146
 Environment=CART_PORT=8080
-Environment=USER_HOST=user.joindevops.store
+Environment=USER_HOST=172.31.65.141
 Environment=USER_PORT=8080
 Environment=AMQP_HOST=rabbitmq.joindevops.store
 // highlight-end

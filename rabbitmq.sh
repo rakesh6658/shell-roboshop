@@ -24,7 +24,7 @@ script_name=$(echo "$0" | cut -d "." -f1)
 log_file="$LOG_DIR/$script_name.log"
 mkdir -p /var/log/shell-roboshop
 
-cp /home/ec2-user/rabbitmq.repo /etc/yum.repos.d/rabbitmq.repo  &>>$log_file
+cp /home/ec2-user/shell-roboshop/rabbitmq.repo /etc/yum.repos.d/rabbitmq.repo  &>>$log_file
 validate $? "copying rabbitmq.repo"
 
 dnf install rabbitmq-server -y &>>$log_file
