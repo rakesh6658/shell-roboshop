@@ -79,10 +79,10 @@ validate $? "copying mongo.repo"
 dnf install mongodb-mongosh -y &>>$log_file
 validate $? "installing mongosh"
 
-INDEX=$(mongosh mongodb.joindevops.store --quiet --eval "db.getMongo().getDBNames().indexOf('catalogue')") &>>$log_file
+INDEX=$(mongosh 172.31.67.112 --quiet --eval "db.getMongo().getDBNames().indexOf('catalogue')") &>>$log_file
 if [ $INDEX -le 0 ]
 then
-mongosh --host mongodb.joindevops.store </app/db/master-data.js
+mongosh --host 172.31.67.112 </app/db/master-data.js
 else
 echo "Catalogue products already loaded"
 fi
