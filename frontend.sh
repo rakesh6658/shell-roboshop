@@ -51,3 +51,11 @@ validate $? "moving to html direcory"
 unzip /tmp/frontend.zip &>>$log_file
 validate $? "extracting frontend"
 
+cp  /home/ec2-user/nginx.conf  /etc/nginx/nginx.conf &>>$log_file
+validate $? "copying nginx.conf"
+
+systemctl restart nginx  &>>$log_file
+validate $? "restarting nginx"
+
+
+
