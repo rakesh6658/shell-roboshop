@@ -73,13 +73,13 @@ validate $? "starting shipping"
 dnf install mysql -y &>>$log_file
 validate $? "installing mysql client"
 
-mysql -h mysql.joindevops.store -uroot -pRoboShop@1 < /app/db/schema.sql &>>$log_file
+mysql -h 172.31.79.188 -uroot -pRoboShop@1 < /app/db/schema.sql &>>$log_file
 validate $? "loading schema"
 
-mysql -h mysql.joindevops.store -uroot -pRoboShop@1 < /app/db/app-user.sql &>>$log_file
+mysql -h 172.31.79.188 -uroot -pRoboShop@1 < /app/db/app-user.sql &>>$log_file
 validate $? "creating app-user"
 
-mysql -h mysql.joindevops.store -uroot -pRoboShop@1 < /app/db/master-data.sql &>>$log_file
+mysql -h 172.31.79.188 -uroot -pRoboShop@1 < /app/db/master-data.sql &>>$log_file
 validate $? "loading master data"
 
 systemctl restart shipping &>>$log_file
